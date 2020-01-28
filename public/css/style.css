@@ -2,17 +2,24 @@
 body {
     font-family: Arial;
     font-size: large;
-    background-color: white;
+    background-color: lightgray;
 }
+
+button:hover {
+    background-color: green;
+    cursor: crosshair;
+}
+
 
 #Allergene {
     font-weight: bold;
 }
 
 .Bur{
-    background-color: black;
+    background-color: grey;
     color: white;
 }
 
 .CustomerInfo {
 }
+
