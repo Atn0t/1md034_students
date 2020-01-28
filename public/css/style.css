@@ -4,6 +4,8 @@ body {
     background-color: lightgray;
 }
 
+button{margin-top: 20px;}
+
 button:hover {
     background-color: green;
     cursor: crosshair;
@@ -14,6 +16,10 @@ table {
     width: 60%;
     text-align: center;
     margin: 0 auto;
+}
+
+section {
+    margin: 8px;
 }
 
 #Allergene {
