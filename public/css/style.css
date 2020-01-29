@@ -4,10 +4,16 @@ body {
     background-color: lightgray;
 }
 
+header > img{
+    width: 100%;
+    opacity: 0.5;
+}
+
 button{margin-top: 20px;}
 
 button:hover {
     background-color: green;
+
     cursor: crosshair;
 }
 
@@ -33,10 +39,12 @@ section {
     padding: 15px;
     text-align: left;
     border: 6px dashed rgba(255, 255, 255);
+    border-radius: 19px;
 }
 
 .CustomerInfo {
     border: 6px dashed rgba(0,0,0,0.74);
+    border-radius: 19px;
     padding: 15px;
     text-align: left;
 }
