@@ -4,9 +4,21 @@ body {
     background-color: lightgray;
 }
 
+header {
+    overflow: hidden;
+}
+
 header > img{
     width: 100%;
+    height: auto;
     opacity: 0.5;
+}
+
+header > h1 {
+    position: absolute;
+    margin-left: 200px;
+    margin-top: 170px;
+    font-size: 3.5em;
 }
 
 button{margin-top: 20px;}
