@@ -8,6 +8,42 @@ header {
     overflow: hidden;
 }
 
+#container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(auto, 1fr));
+}
+
+.gridHeaders {
+    font-size: x-large;
+}
+
+.gridCell {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-self: center;
+}
+
+.gridCell img{
+    width: 390px;
+    height: 310px;
+}
+
+/* javascript */
+.cellItem {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-self: center;
+}
+
+#wrapp {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(auto, 1fr));
+}
+
 header > img{
     width: 100%;
     height: auto;
@@ -18,7 +54,8 @@ header > img{
 header > h1 {
     position: absolute;
     margin-left: 200px;
-    margin-top: 170px;
+    margin-top: 350px;
+    font: arial;
     font-size: 5em;
     z-index: 1;
 }

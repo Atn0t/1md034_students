@@ -1,3 +1,18 @@
+const vm = new Vue({
+el: '#container',
+data: {
+titel: 'Välj en burgare',
+burgers: [menuItem1, menuItem2, menuItem3, menuItem4, menuItem5],
+lactose: "Contains lactose",
+gluten: "Contains gluten"
+}
+})
+
+
+
+
+
+/*
 function menuItem(itemName, lactose, gluten, itemInfo, itemStat, itemImg) {
   this.itemName = itemName;
   this.lactose = lactose;
@@ -18,12 +33,4 @@ let menuItem3 = new menuItem("The Bleeder", true, true , "Found outside kitchen"
 let menuItem4 = new menuItem("Money Shot Meal", false, true, "For your enemies", "-100 hp", " ");
 let menuItem5 = new menuItem("Heart Stopper", false, false,  "New and funky", "555 kCal", " ");
 
-
-
-const vm = new Vue({
-el: '#myID',
-data: {
-titel: 'Välj en burgare',
-burgers: [menuItem1, menuItem2, menuItem3, menuItem4, menuItem5]
-}
-})
+*/
