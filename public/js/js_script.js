@@ -1,3 +1,4 @@
+/*
 function menuItem(itemName, lactose, gluten, itemInfo, itemStat, itemImg) {
     this.itemName = itemName;
     this.lactose = lactose;
@@ -18,10 +19,6 @@ let menuItem4 = new menuItem("Money Shot Meal", false, true, "For your enemies",
 let menuItem5 = new menuItem("Salad Meal", false, false,  "For the picky ones", "555 kCal", "https://vignette.wikia.nocookie.net/gtawiki/images/1/10/BurgerShot-GTASA-SaladMeal.jpg/revision/latest/scale-to-width-down/185?cb=20100220130014");
 
 
-
-
-
-/*
 var id = document.getElementById("wrapp");
 let burgers = [menuItem1, menuItem2, menuItem3, menuItem4, menuItem5]
 

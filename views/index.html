@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
     <script src="https://vuejs.org/js/vue.js" defer></script>
+    <script type="text/javascript" src="js/menu.js"></script>
     <script src="js/js_script.js" defer></script>
     <script src="js/vue_script.js" defer></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -24,15 +25,14 @@
         <div id="container">
             <div class="gridCell" v-for="item in burgers">
                 <h3 class="gridHeaders"> {{item.itemName}}</h3>
-                
                 <img v-bind:src = "item.itemImg" />
                 <ul>
                     <li>{{item.itemStat}}</li>
-                    <li>{{item.itemInfo}}</li>
-                    <li v-if="item.lactose">{{lactose}} </li>
-                    <li v-if="item.gluten">{{gluten}}</li>
+                    <li v-if="item.lactose">Contains <span class="bold">{{lactose}}</span></li>
+                    <li v-else>{{lactoseFree}}</span></li>
+                    <li v-if="item.gluten">Contains <span class="bold">{{gluten}}</span></li>
+                    <li v-else>{{glutenFree}}</li>
                 </ul>
-            
             </div>
         </div>
         

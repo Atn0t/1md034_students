@@ -2,13 +2,13 @@ const vm = new Vue({
 el: '#container',
 data: {
 titel: 'Välj en burgare',
-burgers: [menuItem1, menuItem2, menuItem3, menuItem4, menuItem5],
-lactose: "Contains lactose",
-gluten: "Contains gluten"
+burgers: [food[0], food[1], food[2], food[3], food[4]],
+lactose: "lactose",
+gluten: "gluten",
+lactoseFree: "Lactose free",
+glutenFree: "Gluten free"
 }
 })
-
-
 
 
 

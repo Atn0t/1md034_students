@@ -13,6 +13,10 @@ header {
     grid-template-columns: repeat(3, minmax(auto, 1fr));
 }
 
+.bold {
+    font-weight: bold;
+}
+
 .gridHeaders {
     font-size: x-large;
 }
