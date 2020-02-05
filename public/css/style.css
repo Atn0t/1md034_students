@@ -29,12 +29,14 @@ header {
     justify-self: center;
 }
 
-.gridCell img{
+.gridCell img {
     width: 390px;
     height: 310px;
 }
 
+
 /* javascript */
+
 .cellItem {
     display: flex;
     flex-direction: column;
@@ -48,14 +50,14 @@ header {
     grid-template-columns: repeat(3, minmax(auto, 1fr));
 }
 
-header > img{
+header>img {
     width: 100%;
     height: auto;
     opacity: 0.9;
     z-index: 0;
 }
 
-header > h1 {
+header>h1 {
     position: absolute;
     margin-left: 200px;
     margin-top: 350px;
@@ -86,7 +88,9 @@ header > h1 {
     grid-column: 3;
 }
 
-button{margin-top: 20px;}
+button {
+    margin-top: 20px;
+}
 
 button:hover {
     background-color: green;
@@ -108,7 +112,7 @@ section {
     font-weight: bold;
 }
 
-.Bur{
+.Bur {
     background-color: black;
     color: white;
     padding: 15px;
@@ -118,9 +122,8 @@ section {
 }
 
 .CustomerInfo {
-    border: 6px dashed rgba(0,0,0,0.74);
+    border: 6px dashed rgba(0, 0, 0, 0.74);
     border-radius: 19px;
     padding: 15px;
     text-align: left;
 }
-

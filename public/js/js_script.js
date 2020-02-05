@@ -1,4 +1,26 @@
 /*
+let myButton = document.getElementById("submitbutton");
+let allValues = document.getElementById("customerInfo");  
+
+myButton.onclick = function buttonPress() {
+    var fname = document.getElementById("fname").value;
+    var email = document.getElementById("email").value;
+    var strname = document.getElementById("strname").value;
+    var housenum = document.getElementById("housenum").value;
+    var recipient = document.getElementById("recipient").value;
+    var gender = document.getElementsByName("gender");
+    var gen = "";
+    for (let i = 0; i< gender.length; i++) {
+        if (gender[i].checked) {
+            gen = gender[i].value;
+        }
+    }
+
+
+    return console.log([fname, email, strname, housenum, recipient, gen]);
+
+}
+
 function menuItem(itemName, lactose, gluten, itemInfo, itemStat, itemImg) {
     this.itemName = itemName;
     this.lactose = lactose;
@@ -18,15 +40,12 @@ let menuItem3 = new menuItem("The Bleeder", true, true , "Leaves you bleeding!",
 let menuItem4 = new menuItem("Money Shot Meal", false, true, "For your enemies", "-100 hp", "https://vignette.wikia.nocookie.net/gtawiki/images/e/e3/BurgerShot-GTASA-BeefTower.jpg/revision/latest/scale-to-width-down/185?cb=20100220130108");
 let menuItem5 = new menuItem("Salad Meal", false, false,  "For the picky ones", "555 kCal", "https://vignette.wikia.nocookie.net/gtawiki/images/1/10/BurgerShot-GTASA-SaladMeal.jpg/revision/latest/scale-to-width-down/185?cb=20100220130014");
 
-
 var id = document.getElementById("wrapp");
 let burgers = [menuItem1, menuItem2, menuItem3, menuItem4, menuItem5]
-
 
 for (var burger of burgers) {
 let div = document.createElement("div");
 div.className = "cellItem";
-
 
   let listItem = document.createElement("H1");
   let listValue = document.createTextNode(burger.itemName);
@@ -63,7 +82,5 @@ if(burger.gluten){
 
 div.appendChild(ul);
 id.appendChild(div);
-
 }
-
 */

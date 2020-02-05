@@ -1,95 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+
+<head>
     <script src="https://vuejs.org/js/vue.js" defer></script>
     <script type="text/javascript" src="js/menu.js"></script>
     <script src="js/js_script.js" defer></script>
     <script src="js/vue_script.js" defer></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <title>BURGER SHOT</title>
-    </head>
+</head>
 
-    <body>
-     
-    <header>             
-        <h1>Burger Shot</h1>    
+<body>
+
+    <header>
+        <h1>Burger Shot</h1>
         <img src="https://vignette.wikia.nocookie.net/gtawiki/images/6/61/Men%C3%BA_burger_shot_iv.png/revision/latest?cb=20100321183226">
     </header>
-    <section class="Bur">
+    <main>
+        <section class="Bur">
 
-        <h3>It's bleedin' tasty!</h3>
-        <div id="myID">
-            Choose your meal
-        </div>
-
-        <div id="container">
-            <div class="gridCell" v-for="item in burgers">
-                <h3 class="gridHeaders"> {{item.itemName}}</h3>
-                <img v-bind:src = "item.itemImg" />
-                <ul>
-                    <li>{{item.itemStat}}</li>
-                    <li v-if="item.lactose">Contains <span class="bold">{{lactose}}</span></li>
-                    <li v-else>{{lactoseFree}}</span></li>
-                    <li v-if="item.gluten">Contains <span class="bold">{{gluten}}</span></li>
-                    <li v-else>{{glutenFree}}</li>
-                </ul>
+            <h3>It's bleedin' tasty!</h3>
+            <div id="myID">
+                Choose your meal
             </div>
-        </div>
-        
 
-    </section>
+            <div id="container">
+                <div class="gridCell" v-for="item in burgers">
+                    <h3 class="gridHeaders"> {{item.itemName}} <input type="checkbox" name="chosenBox" :value="item.itemName"> </h3>
+                    <img v-bind:src="item.itemImg" />
+                    <ul>
+                        <li>{{item.itemStat}}</li>
+                        <li v-if="item.lactose">Contains <span class="bold">{{lactose}}</span></li>
+                        <li v-else>{{lactoseFree}}</span>
+                        </li>
+                        <li v-if="item.gluten">Contains <span class="bold">{{gluten}}</span></li>
+                        <li v-else>{{glutenFree}}</li>
+                    </ul>
+                </div>
+        </section>
 
-    <section class="CustomerInfo">
-        <h3>Customer details</h3>
-        <div>Provide your information here</div>
-        <h4>Delivery information:</h4>
-        <section id="contact">
-            <form>
-                <p>
-                    <label for="firstname">Full name</label><br>
-                    <input type="text" id="firstname" name="fn" required="required" placeholder="First name" />
-                </p>
-                <p>
-                    <label for="lastname">E-mail</label><br>
-                    <input type="email" id="lastname" name="ln" placeholder="email@example.com" />
-                </p>
-                <p>
-                    <label for="lastname">Street</label><br>
-                    <input type="text" id="email" name="em" required="required" placeholder="Steet name" />
-                </p>
-                </p>
-                <p>
-                    <label for="lastname">House</label><br>
-                    <input type="number" id="email" name="em" required="required" placeholder="House Number" />
-                </p>
-                <p>
-                    <label for="recipient">Payment method</label><br/>
-                    <select id="recipient" name="rcp">
+        <section class="CustomerInfo">
+            <h3>Customer details</h3>
+            <div>Provide your information here</ div>
+                <h4>Delivery information:</h4>
+                <section id="contact">
+                    <form id="customerInfo">
+                        <p>
+                            <label for="firstname">Full name</label><br>
+                            <input v-model="firstname" id="fname" type="text" name="fn" required="required" placeholder="First name" />
+                        </p>
+
+                        <p>
+                            <label for="email">E-mail</label><br>
+                            <input v-model="email" id="email" type="email" name="mail" required="required" placeholder="email@example.com" />
+                        </p>
+
+                        <p>
+                            <label for="street">Street</label><br>
+                            <input v-model="street" id="strname" type="text" name="street" required="required" placeholder="Steet name" />
+                        </p>
+
+                        <p>
+                            <label for="housenum">House</label><br>
+                            <input v-model="housenum" id="housenum" type="number" name="housenum" required="required" placeholder="House Number" />
+                        </p>
+
+                        <p>
+                            <label for="payment">Payment method</label><br/>
+                            <select v-model="orderpayment" id="payment" name="rcp">
                         <option>Card</option>
                         <option>Swish</option>
                         <option>Cash</option>
                     </select>
-                </p>
-                <p>
-                    <body>
-                        <label for="recipient">Gender</label><br>
-                        <form action="">
-                          <input type="radio" name="gender" value="male"> Male<br>
-                          <input type="radio" name="gender" value="female"> Female<br>
-                          <input type="radio" name="gender" value="other"> Attack helicopter
-                        </form>
-                        </body>
-                </p>
-                <button type="submit"><img src="http://www.clker.com/cliparts/9/u/r/y/z/z/order-button-hi.png" height="70" width="120" /> Places your order</button>
-                        
-            </form>
-        </section>
-    </section>
+                        </p>
 
-       <a href="/map" target="_blank">Open map in new window</a>.
-    
-        <footer>&#169 Christer Pettersson, 2020</footer>
-    </body>
+                        <p>
+                            <label for="recipient">Gender</label><br>
+                            <input v-model="gender" type="radio" name="gender" value="male"> Male<br>
+                            <input v-model="gender" type="radio" name="gender" value="female"> Female<br>
+                            <input v-model="gender" type="radio" name="gender" value="Attack Helicopter"> Attack helicopter
+                        </p>
+
+                    </form>
+
+                    <button v-on:click="submit" id="submitbutton" type="submit"> Places your order
+            </button>
+
+            </div>
+
+            </section>
+        </section>
+
+        <section id="orderinformation" v-if="orderIsPlaced">
+            Chosen Burger: {{checkerBoxer}} <br> Name: {{firstname}} <br> Email: {{email}} <br> Adress: {{street + " " +housenum}} <br> Payment option: {{orderpayment}} <br> gender: {{gender}} <br>
+        </section>
+
+        <a href="/map" target="_blank">Open map in new window</a>
+    </main>
+
+    <footer>&#169 Christer Pettersson, 2020</footer>
+</body>
+
 </html>
 
 
@@ -97,7 +108,7 @@
 
 
 
-        <!--
+<!--
         <div class="item1">
         <h2>The Whack Burger</h2>
         <img src="https://i.ytimg.com/vi/FJM6wd0ehWQ/maxresdefault.jpg" height="200" width="340">
