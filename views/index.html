@@ -5,6 +5,7 @@
     <script src="https://vuejs.org/js/vue.js" defer></script>
     <script type="text/javascript" src="js/menu.js"></script>
     <script src="js/js_script.js" defer></script>
+    <script src="/socket.io/socket.io.js" defer></script>
     <script src="js/vue_script.js" defer></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <title>BURGER SHOT</title>
@@ -56,16 +57,6 @@
                         </p>
 
                         <p>
-                            <label for="street">Street</label><br>
-                            <input v-model="street" id="strname" type="text" name="street" required="required" placeholder="Steet name" />
-                        </p>
-
-                        <p>
-                            <label for="housenum">House</label><br>
-                            <input v-model="housenum" id="housenum" type="number" name="housenum" required="required" placeholder="House Number" />
-                        </p>
-
-                        <p>
                             <label for="payment">Payment method</label><br/>
                             <select v-model="orderpayment" id="payment" name="rcp">
                         <option>Card</option>
@@ -95,7 +86,20 @@
             Chosen Burger: {{checkerBoxer}} <br> Name: {{firstname}} <br> Email: {{email}} <br> Adress: {{street + " " +housenum}} <br> Payment option: {{orderpayment}} <br> gender: {{gender}} <br>
         </section>
 
-        <a href="/map" target="_blank">Open map in new window</a>
+        <div v-for="(order, key) in orders" v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
+            {{key}}
+        </div>
+        <div>
+            <h3> Click in the map! </h3>
+            <a href="/dispatcher" target="_blank">Open dispatcher in new window</a>.
+            <div class="view-box">
+                <div id="dots" v-on:click="addOrder">
+                    <div v-for="(order, key) in orders" v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
+                        {{key}}
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer>&#169 Christer Pettersson, 2020</footer>

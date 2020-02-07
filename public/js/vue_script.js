@@ -1,3 +1,6 @@
+'use strict';
+const socket = io();
+
 const vm = new Vue({
     el: "main",
     data: {
@@ -9,12 +12,20 @@ const vm = new Vue({
         glutenFree: "Gluten free",
         firstname: "",
         email: "",
-        street: "",
-        housenum: "",
         orderpayment: "",
         gender: "",
         orderIsPlaced: false,
         checkerBoxer: [],
+        orders: {}
+    },
+
+    created: function() {
+        socket.on('initialize', function(data) {
+            this.orders = data.orders;
+        }.bind(this));
+        socket.on('currentQueue', function(data) {
+            this.orders = data.orders;
+        }.bind(this));
     },
 
     methods: {
@@ -34,9 +45,26 @@ const vm = new Vue({
             return (this.firstname, this.email, this.street, this.housenum, this.orderpayment, this.gender);
         },
 
+        getNext: function() {
+            let lastOrder = Object.keys(this.orders).reduce(function(last, next) {
+                return Math.max(last, next);
+            }, 0);
+            return lastOrder + 1;
+        },
 
+        addOrder: function(event) {
+            socket.emit("addOrder", {
+                orderId: this.getNext(),
+                details: {
+                    x: event.clientX - 10 - event.currentTarget.getBoundingClientRect().left,
+                    y: event.clientY - 10 - event.currentTarget.getBoundingClientRect().top
+                },
+                orderItems: ["Beans", "Curry"]
+            });
+        }
     }
 });
+
 
 /*
 
