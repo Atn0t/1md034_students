@@ -163,6 +163,10 @@ body {
     text-align: center;
 }
 
+#orderinformation {
+    margin-top: 2em;
+}
+
 #orderList {
     top: 1em;
     left: 1em;

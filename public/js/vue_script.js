@@ -16,7 +16,10 @@ const vm = new Vue({
         gender: "",
         orderIsPlaced: false,
         checkerBoxer: [],
-        orders: {}
+        orderSummary: [],
+        orders: {},
+        localOrder: { orderId: "T", details: { x: 0, y: 0 }, orderItems: [], orderData: [] },
+        orderNum: 0,
     },
 
     created: function() {
@@ -41,26 +44,53 @@ const vm = new Vue({
                     i++;
                 }
             }
+            console.log("submit is used");
             this.checkerBoxer += checkedBoxes;
             return (this.firstname, this.email, this.street, this.housenum, this.orderpayment, this.gender);
+
         },
 
         getNext: function() {
-            let lastOrder = Object.keys(this.orders).reduce(function(last, next) {
-                return Math.max(last, next);
-            }, 0);
-            return lastOrder + 1;
+            this.orderNum++;
+            return this.orderNum;
         },
 
         addOrder: function(event) {
+
+            this.orderSummary = []; //reset the order summary of checked items
+            console.log("Button clicked!");
+            var checkedItems = document.getElementsByName("chosenBox");
+            for (var i = 0, k = 0; i < checkedItems.length; i++) {
+                if (checkedItems[i].checked == true) {
+                    this.orderSummary[k] = checkedItems[i].value;
+                    k++;
+                }
+            }
+            this.localOrder.orderItems = this.orderSummary;
+            this.orderIsPlaced = true;
+
+            //klar
             socket.emit("addOrder", {
                 orderId: this.getNext(),
                 details: {
-                    x: event.clientX - 10 - event.currentTarget.getBoundingClientRect().left,
-                    y: event.clientY - 10 - event.currentTarget.getBoundingClientRect().top
+                    x: this.localOrder.details.x,
+                    y: this.localOrder.details.y
                 },
-                orderItems: ["Beans", "Curry"]
+                orderItems: this.localOrder.orderItems,
+                orderData: [this.firstname, this.email, this.orderpayment, this.gender],
             });
+        },
+
+        displayOrder: function(event) {
+            let offset = {
+                x: event.currentTarget.getBoundingClientRect().left,
+                y: event.currentTarget.getBoundingClientRect().top
+            };
+
+            this.localOrder.details.x = event.clientX - 10 - offset.x;
+            this.localOrder.details.y = event.clientY - 10 - offset.y;
+
+            console.log(this.localOrder.details);
         }
     }
 });

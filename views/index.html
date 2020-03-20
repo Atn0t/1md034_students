@@ -64,77 +64,35 @@
                         <option>Cash</option>
                     </select>
                         </p>
-
+                        <div>
+                            <h3> Where do you want the delivery? </h3>
+                            <div class="view-box">
+                                <div id="dots" v-on:click="displayOrder">
+                                    <div v-bind:style="{ left: localOrder.details.x + 'px', top: localOrder.details.y + 'px'}">
+                                        {{localOrder.orderId}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <p>
                             <label for="recipient">Gender</label><br>
                             <input v-model="gender" type="radio" name="gender" value="male"> Male<br>
                             <input v-model="gender" type="radio" name="gender" value="female"> Female<br>
-                            <input v-model="gender" type="radio" name="gender" value="Attack Helicopter"> Attack helicopter
                         </p>
-
                     </form>
-
-                    <button v-on:click="submit" id="submitbutton" type="submit"> Places your order
+                    <button v-on:click="addOrder" id="submitbutton" type="submit"> Places your order
             </button>
-
             </div>
-
             </section>
         </section>
-
         <section id="orderinformation" v-if="orderIsPlaced">
-            Chosen Burger: {{checkerBoxer}} <br> Name: {{firstname}} <br> Email: {{email}} <br> Adress: {{street + " " +housenum}} <br> Payment option: {{orderpayment}} <br> gender: {{gender}} <br>
+            <h4>Customer info</h4>
+            Name: {{firstname}} <br> Email: {{email}} <br> Payment option: {{orderpayment}} <br> Gender: {{gender}}
+            <h4>Order Summary</h4><span v-for="localOrder in orderSummary">{{localOrder}}</span>
+            <br> <br> May it be of great taste.
         </section>
-
-        <div v-for="(order, key) in orders" v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
-            {{key}}
-        </div>
-        <div>
-            <h3> Click in the map! </h3>
-            <a href="/dispatcher" target="_blank">Open dispatcher in new window</a>.
-            <div class="view-box">
-                <div id="dots" v-on:click="addOrder">
-                    <div v-for="(order, key) in orders" v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
-                        {{key}}
-                    </div>
-                </div>
-            </div>
-        </div>
     </main>
-
-    <footer>&#169 Christer Pettersson, 2020</footer>
+    <footer>&#169 Anton J, 2020</footer>
 </body>
 
 </html>
-
-
-
-
-
-
-<!--
-        <div class="item1">
-        <h2>The Whack Burger</h2>
-        <img src="https://i.ytimg.com/vi/FJM6wd0ehWQ/maxresdefault.jpg" height="200" width="340">
-        <p>Contains <span id="Allergene">Sodium</span></p>
-        <p>Unusual taste for you</p>    
-        <p>1200 kCal</p>
-        </div>
-
-        <div class="item2">
-        <h2>Extra big berger</h2>
-        <img src="http://3.bp.blogspot.com/_j1v_Cj26Tyk/TPCOdCKGKRI/AAAAAAAAAFs/MoTq035wB60/s1600/Burger1996.jpg"  height="200" width="340">
-        <p>Contains <span id="Allergene">Lactose</span></p>
-        <p>Chefs choice</p>
-        <p>2000 kCal</p>
-        </div>
-        
-        <div class="item3">
-        <h2>What is that?</h2>
-        <img src="https://media-cdn.tripadvisor.com/media/photo-s/08/54/51/6e/nasty-burger.jpg" height="200" width="340">
-        <p>No <span id="Allergene">allergenes</span></p>
-        <p>Found outside kitchen</p>
-        <p>456 kCal</p>
-        </div>
-        </div>
-        -->
